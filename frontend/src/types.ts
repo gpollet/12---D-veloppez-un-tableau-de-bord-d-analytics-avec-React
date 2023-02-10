@@ -2,7 +2,7 @@ interface UserId {
 	userId: number;
 }
 
-export interface UserData {
+export interface UserDataType {
 	id: number;
 	userInfos: Array<{
 		firstName: string;
@@ -18,7 +18,7 @@ export interface UserData {
 	}>;
 }
 
-export interface UserActivity extends UserId {
+export interface UserActivityType extends UserId {
 	sessions: Array<{
 		day: string;
     kilogram: number;
@@ -26,14 +26,14 @@ export interface UserActivity extends UserId {
 	}>;
 }
 
-export interface UserSessions extends UserId {
+export interface UserSessionsType extends UserId {
   sessions: Array<{
     day: number;
     sessionLength: number;
   }>
 }
 
-export interface UserPerformance extends UserId {
+export interface UserPerformanceType extends UserId {
   kind: {
     [key: number]: string;
   };
