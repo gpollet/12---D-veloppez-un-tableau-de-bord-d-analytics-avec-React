@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { dataset } from "../api/data.js";
 import LeftNav from "../Components/LeftNav.js";
 import { User } from "../Models/User.js";
 
 const Home = () => {
 	const [userId, setUserId] = useState(12);
-	let thatUser: number;
-	const thatUserData = dataset[0].filter(data => data.id === userId);
-	console.log(thatUserData);
 	const user = new User(userId);
 	return (
 		<>
 			<LeftNav />
+			<div className="dashboard_top-message">
+				<h1>Bonjour {user.getFirstName()}</h1>
+				<p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+			</div>
 		</>
 	);
 };

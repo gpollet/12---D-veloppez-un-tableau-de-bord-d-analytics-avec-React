@@ -11,7 +11,6 @@ html,body {
 main {
   flex: 1 0 auto;
   display: flex;
-  flex-direction: column;
   & div {
     height: 80%;
   }
