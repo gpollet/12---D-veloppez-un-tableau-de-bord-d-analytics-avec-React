@@ -2,20 +2,25 @@ interface UserId {
 	userId: number;
 }
 
+interface UserInfos {
+	firstName: string;
+	lastName: string;
+	age: number;
+}
+
+interface KeyData {
+	calorieCount: number;
+	proteinCount: number;
+	carbohydrateCount: number;
+	lipidCount: number;
+}
+
 export interface UserDataType {
 	id: number;
-	userInfos: Array<{
-		firstName: string;
-		lastName: string;
-		age: number;
-	}>;
-	todayScore: number;
-	keyData: Array<{
-		calorieCount: number;
-		proteinCount: number;
-		carbohydrateCount: number;
-		lipidCount: number;
-	}>;
+	userInfos: UserInfos;
+	todayScore?: number;
+	score?: number;
+	keyData: KeyData;
 }
 
 export interface UserActivityType extends UserId {
@@ -44,9 +49,11 @@ export interface UserPerformanceType extends UserId {
 }
 
 export interface UserType {
-	userId: number;
-	userMainData: UserDataType;
-	userActivity: UserActivityType;
-	userPerformance: UserPerformanceType;
-	userSessions: UserSessionsType;
+	/**
+	 * properties below are obtained using .find() in "Models/User.tsx", which can return type undefined, hence the "|".
+	 */
+	mainData: UserDataType | undefined;
+	activity: UserActivityType | undefined;
+	performance: UserPerformanceType | undefined;
+	sessions: UserSessionsType | undefined;
 }

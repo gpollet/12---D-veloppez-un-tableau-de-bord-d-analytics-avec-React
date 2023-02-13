@@ -8,10 +8,18 @@ const Home = () => {
 	return (
 		<>
 			<LeftNav />
-			<div className="dashboard_top-message">
-				<h1>Bonjour {user.getFirstName()}</h1>
-				<p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-			</div>
+			{/* If no user is found with said ID, does not display the dashboard */}
+			{user.checkIfUserExist() ?
+			(
+				<div className="dashboard_top-message">
+					<h1>Bonjour {user.getInfos()?.firstName}</h1>
+					<p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+				</div>
+			) 
+			:
+			(
+				<h1>Aucun utilisateur trouvé.</h1>
+			)}
 		</>
 	);
 };

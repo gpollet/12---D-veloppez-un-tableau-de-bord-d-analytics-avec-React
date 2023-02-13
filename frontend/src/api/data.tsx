@@ -1,6 +1,6 @@
 import { UserActivityType, UserDataType, UserPerformanceType, UserSessionsType } from "../types.js"
 
-const USER_MAIN_DATA:UserDataType[] = [
+export const USER_MAIN_DATA:UserDataType[] = [
     {
         id: 12,
         userInfos: {
@@ -33,7 +33,7 @@ const USER_MAIN_DATA:UserDataType[] = [
     }
 ]
 
-const USER_ACTIVITY: UserActivityType[] = [
+export const USER_ACTIVITY: UserActivityType[] = [
     {
         userId: 12,
         sessions: [
@@ -117,7 +117,7 @@ const USER_ACTIVITY: UserActivityType[] = [
 ]
 
 
-const USER_AVERAGE_SESSIONS:UserSessionsType[] = [
+export const USER_AVERAGE_SESSIONS:UserSessionsType[] = [
     {
         userId: 12,
         sessions: [
@@ -187,7 +187,7 @@ const USER_AVERAGE_SESSIONS:UserSessionsType[] = [
 ]
 
 
-const USER_PERFORMANCE:UserPerformanceType[] = [
+export const USER_PERFORMANCE:UserPerformanceType[] = [
     {
         userId: 12,
         kind: {
@@ -263,5 +263,3 @@ const USER_PERFORMANCE:UserPerformanceType[] = [
         ]
     }
 ]
-
-export const dataset = {data: USER_MAIN_DATA, activity: USER_ACTIVITY, sessions: USER_AVERAGE_SESSIONS, performance: USER_PERFORMANCE}
