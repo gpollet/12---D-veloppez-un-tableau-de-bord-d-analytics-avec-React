@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom"
-import TopNav from './Components/TopNav.js';
+import LeftNav from "./components/LeftNav.js";
+import TopNav from './components/TopNav.js';
 import './style/css/main.css';
 
 function App() {
-  
 
   return (
     <>
     <TopNav />
+    <LeftNav />
     <main>
     <Outlet />
     </main>

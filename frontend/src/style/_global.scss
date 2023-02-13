@@ -1,7 +1,7 @@
 #root {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex-wrap: wrap;
+  height: 95%;
 }
 
 html,body {
@@ -11,7 +11,7 @@ html,body {
 main {
   flex: 1 0 auto;
   display: flex;
-  & div {
-    height: 80%;
-  }
+  flex-direction: column;
+  width: 80%;
+  padding: 2.5em 0 0 5em;
 }

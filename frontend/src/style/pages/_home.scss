@@ -1,0 +1,12 @@
+.dashboard {
+	&_top-message {
+		width: 100%;
+	}
+  &_bottom-container {
+    display: flex;
+    height: 100%;
+  }
+  &_left-panel {
+    width: 75%;
+  }
+}
