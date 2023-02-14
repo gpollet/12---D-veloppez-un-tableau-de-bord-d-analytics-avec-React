@@ -8,7 +8,7 @@ interface UserInfos {
 	age: number;
 }
 
-interface KeyData {
+export interface KeyData {
 	calorieCount: number;
 	proteinCount: number;
 	carbohydrateCount: number;

@@ -1,5 +1,5 @@
 import * as api from "../api/data.js";
-import { UserType } from "../types.js";
+import { KeyData, UserType } from "../types.js";
 
 export class User implements UserType {
 	mainData: UserType["mainData"];
@@ -12,7 +12,7 @@ export class User implements UserType {
 		this.performance = api.USER_PERFORMANCE.find(set => set.userId === userId);
 		this.sessions = api.USER_AVERAGE_SESSIONS.find(set => set.userId === userId);
 	}
-
+	
 	checkIfUserExist() {
 		// Makes sure data exist for said userId, to avoid potential errors
 		if (!this.mainData || !this.activity || !this.performance || !this.sessions) {
@@ -21,7 +21,7 @@ export class User implements UserType {
 			return true;
 		}
 	}
-
+	
 	getScore() {
 		// Covers both possible names for that parameter
 		if (this.mainData?.score) {
@@ -30,9 +30,9 @@ export class User implements UserType {
 			return this.mainData.todayScore;
 		}
 	}
-
+	
 	getKeyData() {
-		return this.mainData?.keyData;
+		return this.mainData?.keyData as KeyData;
 	}
 
 	getInfos() {
@@ -47,22 +47,22 @@ export class User implements UserType {
 		return this.performance?.data;
 	}
 
-  getPerformanceKind(kind:number) {
-    switch(kind) {
-      case(1):
-      return "cardio";
-      case(2):
-      return "energy";
-      case(3):
-      return "endurance";
-      case(4):
-      return "strength";
-      case(5):
-      return "speed";
-      case(6):
-      return "intensity";
-    }
-  }
+	getPerformanceKind(kind: number) {
+		switch (kind) {
+			case 1:
+				return "cardio";
+			case 2:
+				return "energy";
+			case 3:
+				return "endurance";
+			case 4:
+				return "strength";
+			case 5:
+				return "speed";
+			case 6:
+				return "intensity";
+		}
+	}
 
 	getSessions() {
 		return this.sessions?.sessions;

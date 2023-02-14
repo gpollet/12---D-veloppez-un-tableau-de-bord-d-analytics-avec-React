@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ActivityGraph from "../components/ActivityGraph.js";
 import KeyData from "../components/KeyData.js";
-import LeftNav from "../components/LeftNav.js";
 import SessionsAvg from "../components/SessionsAvg.js";
 import SessionsKind from "../components/SessionsKind.js";
 import UserScore from "../components/UserScore.js";
