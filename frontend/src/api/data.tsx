@@ -1,4 +1,6 @@
-const USER_MAIN_DATA = [
+import { UserActivityType, UserDataType, UserPerformanceType, UserSessionsType } from "../types.js"
+
+export const USER_MAIN_DATA:UserDataType[] = [
     {
         id: 12,
         userInfos: {
@@ -31,7 +33,7 @@ const USER_MAIN_DATA = [
     }
 ]
 
-const USER_ACTIVITY = [
+export const USER_ACTIVITY: UserActivityType[] = [
     {
         userId: 12,
         sessions: [
@@ -115,7 +117,7 @@ const USER_ACTIVITY = [
 ]
 
 
-const USER_AVERAGE_SESSIONS = [
+export const USER_AVERAGE_SESSIONS:UserSessionsType[] = [
     {
         userId: 12,
         sessions: [
@@ -185,7 +187,7 @@ const USER_AVERAGE_SESSIONS = [
 ]
 
 
-const USER_PERFORMANCE = [
+export const USER_PERFORMANCE:UserPerformanceType[] = [
     {
         userId: 12,
         kind: {
@@ -261,12 +263,3 @@ const USER_PERFORMANCE = [
         ]
     }
 ]
-
-
-
-module.exports = {
-    USER_MAIN_DATA,
-    USER_ACTIVITY,
-    USER_AVERAGE_SESSIONS,
-    USER_PERFORMANCE
-}
