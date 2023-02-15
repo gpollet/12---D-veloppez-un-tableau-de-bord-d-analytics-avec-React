@@ -15,7 +15,6 @@ export interface KeyData {
 	lipidCount: number;
 }
 
-
 interface UserDataTypeBase {
 	id: number;
 	userInfos: UserInfos;
@@ -36,8 +35,13 @@ interface UserTodayScore extends UserDataTypeBase {
 	score?: never;
 }
 
+export interface formatedScore {
+	// [key: number] allows use of score[index]
+	[key: number]: formatedScore;
+	score: number;
+}
 
-export type UserDataType = UserTodayScore | UserScore
+export type UserDataType = UserTodayScore | UserScore;
 
 export interface UserActivityType extends UserId {
 	sessions: Array<{
