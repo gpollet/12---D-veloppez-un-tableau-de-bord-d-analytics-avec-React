@@ -15,13 +15,29 @@ export interface KeyData {
 	lipidCount: number;
 }
 
-export interface UserDataType {
+
+interface UserDataTypeBase {
 	id: number;
 	userInfos: UserInfos;
-	todayScore?: number;
-	score?: number;
 	keyData: KeyData;
 }
+
+/**
+ * Makes sure at least "score" property OR "todayScore" property is present
+ */
+
+export interface UserScore extends UserDataTypeBase {
+	score: number;
+	todayScore?: never;
+}
+
+interface UserTodayScore extends UserDataTypeBase {
+	todayScore: number;
+	score?: never;
+}
+
+
+export type UserDataType = UserTodayScore | UserScore
 
 export interface UserActivityType extends UserId {
 	sessions: Array<{
@@ -49,9 +65,6 @@ export interface UserPerformanceType extends UserId {
 }
 
 export interface UserType {
-	/**
-	 * properties below are obtained using .find() in "Models/User.tsx", which can return type undefined, hence the "|".
-	 */
 	mainData: UserDataType;
 	activity: UserActivityType;
 	performance: UserPerformanceType;

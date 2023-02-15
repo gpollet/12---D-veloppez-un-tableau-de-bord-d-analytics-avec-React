@@ -34,7 +34,7 @@ const Home = () => {
 							<div className="dashboard_left-panel--bottom">
 								<SessionsAvg sessions={user.getSessions()} />
 								<SessionsKind sessions={user.getPerformance()} performanceKind={user.getPerformanceKind()} />
-								<UserScore />
+								<UserScore score={user.getScore()} />
 							</div>
 						</div>
 						<div className="dashboard_right-panel">{createKeyData}</div>

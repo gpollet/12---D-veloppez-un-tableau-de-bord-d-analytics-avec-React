@@ -24,11 +24,13 @@ export class User implements UserType {
 
 	getScore() {
 		// Covers both possible names for that parameter
+		let result
 		if (this.mainData.score) {
-			return this.mainData.score;
-		} else if (this.mainData?.todayScore) {
-			return this.mainData.todayScore;
+			result = [{score: this.mainData.score}];
+		} else if (this.mainData.todayScore) {
+			result = [{score: this.mainData.todayScore}];
 		}
+		return result
 	}
 
 	getKeyData() {
