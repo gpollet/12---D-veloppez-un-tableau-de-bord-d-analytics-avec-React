@@ -52,8 +52,8 @@ export interface UserType {
 	/**
 	 * properties below are obtained using .find() in "Models/User.tsx", which can return type undefined, hence the "|".
 	 */
-	mainData: UserDataType | undefined;
-	activity: UserActivityType | undefined;
-	performance: UserPerformanceType | undefined;
-	sessions: UserSessionsType | undefined;
+	mainData: UserDataType;
+	activity: UserActivityType;
+	performance: UserPerformanceType;
+	sessions: UserSessionsType;
 }

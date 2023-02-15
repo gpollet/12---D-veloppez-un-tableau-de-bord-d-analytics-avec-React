@@ -30,11 +30,10 @@ const Home = () => {
 					</div>
 					<div className="dashboard_bottom-container">
 						<div className="dashboard_left-panel">
-							<p>Test left panel</p>
-							<ActivityGraph />
+							<ActivityGraph sessions={user.getActivity()} />
 							<div className="dashboard_left-panel--bottom">
-								<SessionsAvg />
-								<SessionsKind />
+								<SessionsAvg sessions={user.getSessions()} />
+								<SessionsKind sessions={user.getPerformance()} performanceKind={user.getPerformanceKind()} />
 								<UserScore />
 							</div>
 						</div>
