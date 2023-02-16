@@ -33,7 +33,7 @@ const Home = () => {
 							<ActivityGraph sessions={user.getActivity()} />
 							<div className="dashboard_left-panel--bottom">
 								<SessionsAvg sessions={user.getSessions()} />
-								<SessionsKind sessions={user.getPerformance()} performanceKind={user.getPerformanceKind()} />
+								<SessionsKind sessions={user.getPerformance()} />
 								<UserScore score={user.getScore()} />
 							</div>
 						</div>

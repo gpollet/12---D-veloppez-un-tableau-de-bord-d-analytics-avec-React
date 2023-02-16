@@ -63,7 +63,7 @@ export interface UserPerformanceType extends UserId {
 	};
 	data: Array<{
 		value: number;
-		kind: number;
+		kind: number | string;
 	}>;
 }
 

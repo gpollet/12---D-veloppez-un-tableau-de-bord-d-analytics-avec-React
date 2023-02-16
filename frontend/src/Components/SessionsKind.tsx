@@ -1,29 +1,14 @@
 import { CartesianGrid, PolarAngleAxis, PolarGrid, Radar, RadarChart, Tooltip } from "recharts";
 import { UserPerformanceType } from "../types.js";
 
-const SessionsKind = ({ sessions, performanceKind }: { sessions: UserPerformanceType["data"], performanceKind: UserPerformanceType["kind"] }) => {
-	/**
-	 * Converts the performance kinds from sessions (type: number) to its text equivalent
-	 */
-	const formatPerformances = () => {
-		const result:Array<{value:number, kind:string}> = [];
-		sessions.map(session => {
-			for (let [key, value] of Object.entries(performanceKind)) {
-				if (Number(key) == session.kind)
-					result.push({
-						value: session.value,
-						kind: value,
-					});
-			}
-		});
-		return result.reverse();
-	};
+const SessionsKind = ({ sessions }: { sessions: UserPerformanceType["data"] }) => {
 	return (
 		<>
 			<RadarChart
 				width={258}
 				height={263}
-				data={formatPerformances()}
+				data={sessions}
+				className="chart_session-kind"
 			>
 				<Radar
 					dataKey="value"

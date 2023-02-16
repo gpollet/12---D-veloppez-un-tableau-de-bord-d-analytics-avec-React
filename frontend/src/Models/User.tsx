@@ -9,8 +9,12 @@ export class User implements UserType {
 	constructor(userId: number) {
 		this.mainData = api.USER_MAIN_DATA.find(set => set.id === userId) as UserType["mainData"];
 		this.activity = api.USER_ACTIVITY.find(set => set.userId === userId) as UserType["activity"];
-		this.performance = api.USER_PERFORMANCE.find(set => set.userId === userId) as UserType["performance"];
-		this.sessions = api.USER_AVERAGE_SESSIONS.find(set => set.userId === userId) as UserType["sessions"];
+		this.performance = api.USER_PERFORMANCE.find(
+			set => set.userId === userId
+		) as UserType["performance"];
+		this.sessions = api.USER_AVERAGE_SESSIONS.find(
+			set => set.userId === userId
+		) as UserType["sessions"];
 	}
 
 	checkIfUserExist() {
@@ -24,13 +28,13 @@ export class User implements UserType {
 
 	getScore() {
 		// Covers both possible names for that parameter
-		let result
+		let result;
 		if (this.mainData.score) {
-			result = [{score: this.mainData.score}];
+			result = [{ score: this.mainData.score }];
 		} else if (this.mainData.todayScore) {
-			result = [{score: this.mainData.todayScore}];
+			result = [{ score: this.mainData.todayScore }];
 		}
-		return result as formatedScore[]
+		return result as formatedScore[];
 	}
 
 	getKeyData() {
@@ -46,24 +50,62 @@ export class User implements UserType {
 	}
 
 	getPerformance() {
-		return this.performance.data;
-	}
-
-	getPerformanceKind() {
-		return this.performance.kind;
+		/**
+		 * Converts the performance kinds from sessions (type: number) to its text equivalent and translates it to the desired displayed text
+		 */
+		this.performance.data.map(entry => {
+			switch (entry.kind) {
+				case 1:
+					entry.kind = "Cardio";
+					break;
+				case 2:
+					entry.kind = "Énergie";
+					break;
+				case 3:
+					entry.kind = "Endurance";
+					break;
+				case 4:
+					entry.kind = "Force";
+					break;
+				case 5:
+					entry.kind = "Vitesse";
+					break;
+				case 6:
+					entry.kind = "Intensité";
+					break;
+			}
+		});
+		// Converts this.performance.data to an array so its order can be reversed, so that it matches the desired display on the chart (intensity at the top, endurance at the bottom)
+		return this.performance.data.flat().reverse();
 	}
 
 	getSessions() {
-		const sessions = this.sessions.sessions
-			sessions.map((session) => {
-				if (session.day === 1) session.day = "L"
-				if (session.day === 2) session.day = "M"
-				if (session.day === 3) session.day = "M"
-				if (session.day === 4) session.day = "J"
-				if (session.day === 5) session.day = "V"
-				if (session.day === 6) session.day = "S"
-				if (session.day === 7) session.day = "D"
-			})
-		return sessions;
+		// Converts days from numbers to their corresponding name
+		this.sessions.sessions.map(session => {
+			switch (session.day) {
+				case 1:
+					session.day = "L";
+					break;
+				case 2:
+					session.day = "M";
+					break;
+				case 3:
+					session.day = "M";
+					break;
+				case 4:
+					session.day = "J";
+					break;
+				case 5:
+					session.day = "V";
+					break;
+				case 6:
+					session.day = "S";
+					break;
+				case 7:
+					session.day = "D";
+					break;
+			}
+		});
+		return this.sessions.sessions;
 	}
 }
