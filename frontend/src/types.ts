@@ -37,7 +37,6 @@ interface UserTodayScore extends UserDataTypeBase {
 
 export interface formatedScore {
 	// [key: number] allows use of score[index]
-	[key: number]: formatedScore;
 	score: number;
 }
 

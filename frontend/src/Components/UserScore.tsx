@@ -13,7 +13,6 @@ const UserScore = ({ score }: { score: formatedScore[] }) => {
 		const progressAngle = userProgress * 3.6;
 		return startAngle - progressAngle;
 	};
-	//console.log(percentToAngle())
 	return (
 		<>
 			<PieChart

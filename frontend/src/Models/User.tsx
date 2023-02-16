@@ -1,5 +1,5 @@
 import * as api from "../api/data.js";
-import { KeyData, UserType } from "../types.js";
+import { formatedScore, KeyData, UserType } from "../types.js";
 
 export class User implements UserType {
 	mainData: UserType["mainData"];
@@ -30,7 +30,7 @@ export class User implements UserType {
 		} else if (this.mainData.todayScore) {
 			result = [{score: this.mainData.todayScore}];
 		}
-		return result
+		return result as formatedScore[]
 	}
 
 	getKeyData() {
