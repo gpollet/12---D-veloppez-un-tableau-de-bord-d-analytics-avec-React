@@ -1,4 +1,4 @@
-import { CartesianGrid, Pie, PieChart } from "recharts";
+import { Label, Pie, PieChart, Text } from "recharts";
 import { formatedScore } from "../types.js";
 
 const UserScore = ({ score }: { score: formatedScore[] }) => {
@@ -7,8 +7,9 @@ const UserScore = ({ score }: { score: formatedScore[] }) => {
 	/**
 	 * Calculates the value of the <Pie> endAngle needed for the circle to accurately display user's progress
 	 */
+	const userProgress = score[0].score * 100;
+	const labelContent = `${userProgress}% de votre objectif`;
 	const percentToAngle = () => {
-		const userProgress = score[0].score * 100;
 		// Since we know 3.6° = 1%, calculates at how many degrees the end angle must be to actually display the user's progress in %
 		const progressAngle = userProgress * 3.6;
 		return startAngle - progressAngle;
@@ -28,7 +29,21 @@ const UserScore = ({ score }: { score: formatedScore[] }) => {
 					fill="#FF0000"
 					startAngle={startAngle}
 					endAngle={percentToAngle()}
-				></Pie>
+				>
+					<Label
+						width={75}
+						content={
+							<Text
+								textAnchor="middle"
+								verticalAnchor="middle"
+								x={258 / 2}
+								y={263 / 2}
+							>
+								{labelContent}
+							</Text>
+						}
+					/>
+				</Pie>
 			</PieChart>
 		</>
 	);
