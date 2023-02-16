@@ -1,10 +1,9 @@
-import { CartesianGrid, Legend, Line, LineChart, ReferenceLine, Tooltip, XAxis } from "recharts";
+import { Line, LineChart, Tooltip, XAxis } from "recharts";
 import { UserSessionsType } from "../types.js";
 
 
 
 const SessionsAvg = ({sessions}: {sessions: UserSessionsType["sessions"]}) => {
-  
   return (
     <>
       <LineChart
@@ -12,14 +11,18 @@ const SessionsAvg = ({sessions}: {sessions: UserSessionsType["sessions"]}) => {
       height={263}
       data={sessions}
       >
-        <CartesianGrid />
+        
         <XAxis
         dataKey={"day"}
+        axisLine={false}
         />
         <Line
         dataKey="sessionLength"
         unit="mn"
-        type={"basis"}
+        type={"monotone"}
+        dot={false}
+        activeDot={true}
+        strokeWidth={2}
         />
         <Tooltip />
       </LineChart>

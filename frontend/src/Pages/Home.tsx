@@ -7,7 +7,7 @@ import UserScore from "../components/UserScore.js";
 import { User } from "../models/User.js";
 
 const Home = () => {
-	const [userId, setUserId] = useState(12);
+	const [userId, setUserId] = useState(18);
 	const user = new User(userId);
 	const createKeyData = Object.entries(user.getKeyData()).map(([key, value]) => {
 		let nutrientType = key.replace("Count", "");

@@ -54,6 +54,16 @@ export class User implements UserType {
 	}
 
 	getSessions() {
-		return this.sessions.sessions;
+		const sessions = this.sessions.sessions
+			sessions.map((session) => {
+				if (session.day === 1) session.day = "L"
+				if (session.day === 2) session.day = "M"
+				if (session.day === 3) session.day = "M"
+				if (session.day === 4) session.day = "J"
+				if (session.day === 5) session.day = "V"
+				if (session.day === 6) session.day = "S"
+				if (session.day === 7) session.day = "D"
+			})
+		return sessions;
 	}
 }

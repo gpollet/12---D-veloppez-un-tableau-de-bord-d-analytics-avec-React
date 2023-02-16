@@ -52,7 +52,7 @@ export interface UserActivityType extends UserId {
 
 export interface UserSessionsType extends UserId {
 	sessions: Array<{
-		day: number;
+		day: number | string;
 		sessionLength: number;
 	}>;
 }
