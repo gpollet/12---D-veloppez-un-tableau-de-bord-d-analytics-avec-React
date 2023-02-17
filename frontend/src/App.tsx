@@ -4,7 +4,6 @@ import TopNav from './components/TopNav.js';
 import './style/css/main.css';
 
 function App() {
-
   return (
     <>
     <TopNav />

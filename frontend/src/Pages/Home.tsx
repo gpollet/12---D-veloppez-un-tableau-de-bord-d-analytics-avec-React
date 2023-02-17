@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { getUserGeneralData, getUserSpecificData } from "../api/api.js";
 import ActivityGraph from "../components/ActivityGraph.js";
 import KeyData from "../components/KeyData.js";
 import SessionsAvg from "../components/SessionsAvg.js";
@@ -6,9 +6,20 @@ import SessionsKind from "../components/SessionsKind.js";
 import UserScore from "../components/UserScore.js";
 import { User } from "../models/User.js";
 
+const userId = 12;
+const mainData = await getUserGeneralData(userId);
+const performance = await getUserSpecificData(userId, "performance");
+const sessions = await getUserSpecificData(userId, "average-sessions");
+const activity = await getUserSpecificData(userId, "activity");
+
 const Home = () => {
-	const [userId, setUserId] = useState(18);
-	const user = new User(userId);
+	const userData = {
+		mainData: mainData,
+		performance: performance,
+		sessions: sessions,
+		activity: activity,
+	};
+	const user = new User(userId, userData);
 	const createKeyData = Object.entries(user.getKeyData()).map(([key, value]) => {
 		let nutrientType = key.replace("Count", "");
 		return (
