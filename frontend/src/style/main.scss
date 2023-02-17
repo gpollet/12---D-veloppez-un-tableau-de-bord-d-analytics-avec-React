@@ -3,4 +3,6 @@
 @use "./components/topNav";
 @use "./components/leftNav";
 @use "./components/keyData";
-@use "./pages/home"
+@use "./components/SessionAvg";
+@use "./components/SessionsKind";
+@use "./pages/home";

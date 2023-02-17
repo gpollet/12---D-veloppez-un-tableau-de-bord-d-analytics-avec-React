@@ -15,13 +15,32 @@ export interface KeyData {
 	lipidCount: number;
 }
 
-export interface UserDataType {
+interface UserDataTypeBase {
 	id: number;
 	userInfos: UserInfos;
-	todayScore?: number;
-	score?: number;
 	keyData: KeyData;
 }
+
+/**
+ * Makes sure at least "score" property OR "todayScore" property is present
+ */
+
+export interface UserScore extends UserDataTypeBase {
+	score: number;
+	todayScore?: never;
+}
+
+interface UserTodayScore extends UserDataTypeBase {
+	todayScore: number;
+	score?: never;
+}
+
+export interface formatedScore {
+	// [key: number] allows use of score[index]
+	score: number;
+}
+
+export type UserDataType = UserTodayScore | UserScore;
 
 export interface UserActivityType extends UserId {
 	sessions: Array<{
@@ -33,7 +52,7 @@ export interface UserActivityType extends UserId {
 
 export interface UserSessionsType extends UserId {
 	sessions: Array<{
-		day: number;
+		day: number | string;
 		sessionLength: number;
 	}>;
 }
@@ -44,16 +63,15 @@ export interface UserPerformanceType extends UserId {
 	};
 	data: Array<{
 		value: number;
-		kind: number;
+		kind: number | string;
 	}>;
 }
 
-export interface UserType {
-	/**
-	 * properties below are obtained using .find() in "Models/User.tsx", which can return type undefined, hence the "|".
-	 */
-	mainData: UserDataType | undefined;
-	activity: UserActivityType | undefined;
-	performance: UserPerformanceType | undefined;
-	sessions: UserSessionsType | undefined;
+export interface UserType extends UserId {
+	mainData: UserDataType;
+	activity: UserActivityType;
+	performance: UserPerformanceType;
+	sessions: UserSessionsType;
 }
+
+export type ApiEndpoints = "performance" | "average-sessions" | "activity"

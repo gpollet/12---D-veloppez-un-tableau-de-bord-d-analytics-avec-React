@@ -2,11 +2,15 @@
 	&_top-message {
 		width: 100%;
 	}
-  &_bottom-container {
-    display: flex;
-    height: 100%;
-  }
-  &_left-panel {
-    width: 75%;
-  }
+	&_bottom-container {
+		display: flex;
+		justify-content: space-between;
+		height: 100%;
+	}
+	&_left-panel {
+		&--bottom {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
 }
