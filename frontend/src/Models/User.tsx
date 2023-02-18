@@ -1,4 +1,3 @@
-import * as api from "../api/data.js";
 import { formatedScore, KeyData, UserType } from "../types.js";
 
 export class User implements UserType {
@@ -7,27 +6,15 @@ export class User implements UserType {
 	activity: UserType["activity"];
 	performance: UserType["performance"];
 	sessions: UserType["sessions"];
-	//constructor(userId: number) {
-	//	this.mainData = api.USER_MAIN_DATA.find(set => set.id === userId) as UserType["mainData"];
-	//	this.activity = api.USER_ACTIVITY.find(set => set.userId === userId) as UserType["activity"];
-	//	this.performance = api.USER_PERFORMANCE.find(
-	//		set => set.userId === userId
-	//	) as UserType["performance"];
-	//	this.sessions = api.USER_AVERAGE_SESSIONS.find(
-	//		set => set.userId === userId
-	//	) as UserType["sessions"];
-	//}
 
-	constructor(
-		userId: number,
-		userData: {
-			mainData: UserType["mainData"];
-			activity: UserType["activity"];
-			performance: UserType["performance"];
-			sessions: UserType["sessions"];
-		}
-	) {
-		this.userId = userId;
+	constructor(userData: {
+		userId: number;
+		mainData: UserType["mainData"];
+		activity: UserType["activity"];
+		performance: UserType["performance"];
+		sessions: UserType["sessions"];
+	}) {
+		this.userId = userData.userId;
 		this.mainData = userData.mainData as UserType["mainData"];
 		this.activity = userData.activity as UserType["activity"];
 		this.performance = userData.performance as UserType["performance"];
