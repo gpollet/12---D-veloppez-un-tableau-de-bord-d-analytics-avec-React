@@ -74,4 +74,4 @@ export interface UserType extends UserId {
 	sessions: UserSessionsType;
 }
 
-export type ApiEndpoints = "performance" | "average-sessions" | "activity"
+export type ApiEndpoints = "performance" | "average-sessions" | "activity" | "main-data"

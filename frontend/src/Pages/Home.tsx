@@ -1,35 +1,27 @@
-import { getUserGeneralData, getUserSpecificData } from "../api/api.js";
+import { useLoaderData } from "react-router-dom";
 import ActivityGraph from "../components/ActivityGraph.js";
 import KeyData from "../components/KeyData.js";
 import SessionsAvg from "../components/SessionsAvg.js";
 import SessionsKind from "../components/SessionsKind.js";
 import UserScore from "../components/UserScore.js";
 import { User } from "../models/User.js";
-
-const userId = 12;
-const mainData = await getUserGeneralData(userId);
-const performance = await getUserSpecificData(userId, "performance");
-const sessions = await getUserSpecificData(userId, "average-sessions");
-const activity = await getUserSpecificData(userId, "activity");
+import { UserType } from "../types.js";
 
 const Home = () => {
-	const userData = {
-		mainData: mainData,
-		performance: performance,
-		sessions: sessions,
-		activity: activity,
-	};
-	const user = new User(userId, userData);
-	const createKeyData = Object.entries(user.getKeyData()).map(([key, value]) => {
-		let nutrientType = key.replace("Count", "");
-		return (
-			<KeyData
-				key={key}
-				nutrientType={nutrientType}
-				nutrientValue={value}
-			/>
-		);
-	});
+	const userData = useLoaderData() as UserType;
+	const user = new User(userData);
+	const createKeyData = () =>
+		Object.entries(user.getKeyData()).map(([key, value]) => {
+			// Retrieves the name of all the nutrients from the data, and removes "count" from it to get a list of them
+			const nutrientType = key.replace("Count", "");
+			return (
+				<KeyData
+					key={key}
+					nutrientType={nutrientType}
+					nutrientValue={value}
+				/>
+			);
+		});
 	return (
 		<>
 			{/* If no user is found with said ID, does not display the dashboard */}
@@ -48,7 +40,7 @@ const Home = () => {
 								<UserScore score={user.getScore()} />
 							</div>
 						</div>
-						<div className="dashboard_right-panel">{createKeyData}</div>
+						<div className="dashboard_right-panel">{createKeyData()}</div>
 					</div>
 				</>
 			) : (
