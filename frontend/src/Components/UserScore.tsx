@@ -1,4 +1,4 @@
-import { Label, Pie, PieChart, Text } from "recharts";
+import { Label, Pie, PieChart, ResponsiveContainer, Text } from "recharts";
 import { formatedScore } from "../types.js";
 
 const UserScore = ({ score }: { score: formatedScore[] }) => {

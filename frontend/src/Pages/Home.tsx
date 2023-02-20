@@ -28,7 +28,7 @@ const Home = () => {
 			{user.checkIfUserExist() ? (
 				<>
 					<div className="dashboard_top-message">
-						<h1>Bonjour {user.getInfos()?.firstName}</h1>
+						<h1>Bonjour <span className="home_user-name">{user.getInfos()?.firstName}</span></h1>
 						<p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
 					</div>
 					<div className="dashboard_bottom-container">

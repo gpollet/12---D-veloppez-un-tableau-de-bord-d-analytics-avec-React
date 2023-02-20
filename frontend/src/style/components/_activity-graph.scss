@@ -1,11 +1,16 @@
-.activity-graph_custom-tooltip {
-  background-color: #E60000;
-  color: white;
-  width: fit-content;
-  height: fit-content;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-weight: 500;
+.activity-graph_ {
+	&custom-tooltip {
+		background-color: #e60000;
+		color: white;
+		width: fit-content;
+		height: fit-content;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		font-weight: 500;
+	}
+	&title {
+		font-weight: bold;
+	}
 }
