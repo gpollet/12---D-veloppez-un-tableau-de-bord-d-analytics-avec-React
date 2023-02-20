@@ -1,8 +1,4 @@
 @use "./vendors/normalize.scss";
 @use "./global";
-@use "./components/topNav";
-@use "./components/leftNav";
-@use "./components/keyData";
-@use "./components/SessionAvg";
-@use "./components/SessionsKind";
-@use "./pages/home";
+@use "./components/components-index";
+@use "./pages/pages-index"

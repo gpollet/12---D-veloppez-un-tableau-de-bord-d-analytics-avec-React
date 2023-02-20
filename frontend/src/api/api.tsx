@@ -37,3 +37,4 @@ export const getAllUserData = async (userId: number) => {
 		activity: (await requestModel(userId, "activity")) as unknown as UserType["activity"],
 	};
 };
+
