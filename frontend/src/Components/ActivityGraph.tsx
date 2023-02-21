@@ -1,17 +1,20 @@
-import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
-import { Payload } from "recharts/types/component/DefaultLegendContent.js";
+import { Bar, BarChart, CartesianGrid, Legend, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
 import { UserActivityType } from "../types.js";
 
 const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] }) => {
 	// Retrieves the number of the day corresponding to each session
 	const getSessionDay = () => sessions.map(session => new Date(session.day).getDate());
-	// If tooltip is active, display a custom div containing the values corresponding to that session
-	const TooltipContent = ({ active, payload }: { active: boolean; payload: Payload }):JSX.Element => {
-		if (active && payload && Object.values(payload).length) {
+	/**
+	 * If tooltip is active, display a custom div containing the values corresponding to that session
+	 * TooltipProps<value, name("Poids (kg" | "Calories brûlées (kCal)")>
+	 */
+	const TooltipContent = ({ active, payload }: TooltipProps<number, string>
+	):JSX.Element => {
+		if (active && payload && payload.length) {
 			return (
 				<div className="activity-graph_custom-tooltip">
-					<p>{Object.values(payload)[0].value + Object.values(payload)[0].unit}</p>
-					<p>{Object.values(payload)[1].value + Object.values(payload)[1].unit}</p>
+					<p>{payload[0].value}{payload[0].unit}</p>
+					<p>{payload[1].value}{payload[1].unit}</p>
 				</div>
 			);
 		}
@@ -23,18 +26,6 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 				</div>
 			)
 		}
-	};
-	const calcWeightAxisTicks = () => {
-		let weights:number[] = [];
-		sessions.map(session => {
-			weights.push(session.kilogram);
-		});
-		const minMaxValues = {
-			min: Math.min(...weights) - 1,
-			middle: Math.min(...weights) + (Math.max(...weights) - Math.min(...weights)) / 2,
-			max: Math.max(...weights) + 1,
-		};
-		return minMaxValues;
 	};
 	const containerHeight = 320;
 	const legendHeight = 30;
@@ -82,7 +73,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 				/>
 				<Tooltip
 					position={{ y: 30 }}
-					content={<TooltipContent active={false} payload={undefined} />}
+					content={<TooltipContent />}
 					wrapperStyle={{ outline: "none" }}
 				/>
 				<Legend
