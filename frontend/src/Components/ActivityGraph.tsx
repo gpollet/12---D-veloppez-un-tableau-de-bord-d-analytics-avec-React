@@ -66,11 +66,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 					dataKey="kilogram"
 					axisLine={false}
 					domain={["dataMin-1", "dataMax+1"]}
-					ticks={[
-						calcWeightAxisTicks().min,
-						calcWeightAxisTicks().middle,
-						calcWeightAxisTicks().max,
-					]}
+					allowDecimals={false}
 				/>
 				<YAxis
 					yAxisId="caloriesYAxis"
@@ -86,7 +82,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 				/>
 				<Tooltip
 					position={{ y: 30 }}
-					content={<TooltipContent />}
+					content={<TooltipContent active={false} payload={undefined} />}
 					wrapperStyle={{ outline: "none" }}
 				/>
 				<Legend

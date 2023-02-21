@@ -1,7 +1,7 @@
 import { Line, LineChart, Tooltip, XAxis } from "recharts";
 import { UserSessionsType } from "../types.js";
 
-const SessionsAvg = ({ sessions }: { sessions: UserSessionsType["sessions"] }) => {
+const SessionsAvg = ({ sessions }: { sessions: UserSessionsType["sessions"] }):JSX.Element => {
 	return (
 		<>
 			<LineChart
@@ -22,7 +22,7 @@ const SessionsAvg = ({ sessions }: { sessions: UserSessionsType["sessions"] }) =
 					dot={false}
 					activeDot={true}
 					strokeWidth={2}
-					//stroke="white"
+					stroke="white"
 				/>
 				<Tooltip
 					labelFormatter={() => ""}
