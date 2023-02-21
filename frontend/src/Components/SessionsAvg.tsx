@@ -1,7 +1,25 @@
-import { Line, LineChart, Tooltip, XAxis } from "recharts";
+import { Line, LineChart, Tooltip, XAxis, TooltipProps } from "recharts";
 import { UserSessionsType } from "../types.js";
 
 const SessionsAvg = ({ sessions }: { sessions: UserSessionsType["sessions"] }):JSX.Element => {
+	const TooltipContent = ({ active, payload }: TooltipProps<number, string>
+		):JSX.Element => {
+			if (active && payload && payload.length) {
+				return (
+					<div className="session-avg_custom-tooltip">
+						{<p>{payload[0].value}{payload[0].unit}</p>}
+					</div>
+				);
+			}
+			// Else scenario required by Typescript
+			else {
+				return (
+					<div className="activity-graph_custom-tooltip">
+						<p>Erreur</p>
+					</div>
+				)
+			}
+		};
 	return (
 		<>
 			<LineChart
@@ -25,8 +43,7 @@ const SessionsAvg = ({ sessions }: { sessions: UserSessionsType["sessions"] }):J
 					stroke="white"
 				/>
 				<Tooltip
-					labelFormatter={() => ""}
-					formatter={(sessions): string | number => [sessions]}
+				content={<TooltipContent />}
 				/>
 			</LineChart>
 		</>
