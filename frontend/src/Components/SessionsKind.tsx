@@ -9,26 +9,23 @@ import {
 } from "recharts";
 import { UserPerformanceType } from "../types.js";
 
-const SessionsKind = ({ sessions }: { sessions: UserPerformanceType["data"] }) => {
+const SessionsKind = ({ sessions, height, width }: { sessions: UserPerformanceType["data"], height?: number, width?: number  }):JSX.Element => {
 	return (
 		<>
-			<ResponsiveContainer
-				width="30%"
-				height={263}
+			<RadarChart
+				data={sessions}
+				height={height}
+				width={width}
+				className="chart_session-kind"
 			>
-				<RadarChart
-					data={sessions}
-					className="chart_session-kind"
-				>
-					<Radar
-						dataKey="value"
-						fill="#FF0101B2"
-					/>
-					;
-					<PolarGrid />
-					<PolarAngleAxis dataKey={"kind"} />
-				</RadarChart>
-			</ResponsiveContainer>
+				<Radar
+					dataKey="value"
+					fill="#FF0101B2"
+				/>
+				;
+				<PolarGrid />
+				<PolarAngleAxis dataKey={"kind"} />
+			</RadarChart>
 		</>
 	);
 };

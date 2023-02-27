@@ -1,7 +1,7 @@
 import { Label, Pie, PieChart, ResponsiveContainer, Text } from "recharts";
 import { formatedScore } from "../types.js";
 
-const UserScore = ({ score }: { score: formatedScore[] }) => {
+const UserScore = ({ score, height, width }: { score: formatedScore[], height?: number, width?: number }):JSX.Element => {
 	const pieRadius = 90;
 	const startAngle = 210;
 	/**
@@ -14,38 +14,38 @@ const UserScore = ({ score }: { score: formatedScore[] }) => {
 		const progressAngle = userProgress * 3.6;
 		return startAngle - progressAngle;
 	};
+
 	return (
 		<>
-			<ResponsiveContainer
-				width="30%"
-				height={263}
+			<PieChart
+				data={score}
+				width={width}
+				height={height}
 			>
-				<PieChart data={score}>
-					<Pie
-						data={score}
-						dataKey={"score"}
-						innerRadius={pieRadius - 10}
-						outerRadius={pieRadius}
-						fill="#FF0000"
-						startAngle={startAngle}
-						endAngle={percentToAngle()}
-					>
-						<Label
-							width={75}
-							content={
-								<Text
-									textAnchor="middle"
-									verticalAnchor="middle"
-									x={258 / 2}
-									y={263 / 2}
-								>
-									{labelContent}
-								</Text>
-							}
-						/>
-					</Pie>
-				</PieChart>
-			</ResponsiveContainer>
+				<Pie
+					data={score}
+					dataKey={"score"}
+					innerRadius={pieRadius - 10}
+					outerRadius={pieRadius}
+					fill="#FF0000"
+					startAngle={startAngle}
+					endAngle={percentToAngle()}
+				>
+					<Label
+						width={75}
+						content={
+							<Text
+								textAnchor="middle"
+								verticalAnchor="middle"
+								x={258 / 2}
+								y={263 / 2}
+							>
+								{labelContent}
+							</Text>
+						}
+					/>
+				</Pie>
+			</PieChart>
 		</>
 	);
 };
