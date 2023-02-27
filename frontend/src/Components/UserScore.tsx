@@ -16,35 +16,36 @@ const UserScore = ({ score }: { score: formatedScore[] }) => {
 	};
 	return (
 		<>
-			<PieChart
-				width={258}
+			<ResponsiveContainer
+				width="30%"
 				height={263}
-				data={score}
 			>
-				<Pie
-					data={score}
-					dataKey={"score"}
-					innerRadius={pieRadius - 10}
-					outerRadius={pieRadius}
-					fill="#FF0000"
-					startAngle={startAngle}
-					endAngle={percentToAngle()}
-				>
-					<Label
-						width={75}
-						content={
-							<Text
-								textAnchor="middle"
-								verticalAnchor="middle"
-								x={258 / 2}
-								y={263 / 2}
-							>
-								{labelContent}
-							</Text>
-						}
-					/>
-				</Pie>
-			</PieChart>
+				<PieChart data={score}>
+					<Pie
+						data={score}
+						dataKey={"score"}
+						innerRadius={pieRadius - 10}
+						outerRadius={pieRadius}
+						fill="#FF0000"
+						startAngle={startAngle}
+						endAngle={percentToAngle()}
+					>
+						<Label
+							width={75}
+							content={
+								<Text
+									textAnchor="middle"
+									verticalAnchor="middle"
+									x={258 / 2}
+									y={263 / 2}
+								>
+									{labelContent}
+								</Text>
+							}
+						/>
+					</Pie>
+				</PieChart>
+			</ResponsiveContainer>
 		</>
 	);
 };

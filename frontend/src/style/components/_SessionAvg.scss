@@ -1,11 +1,9 @@
 .chart_session-average {
-  background-color: #FF0000;
-  &--axis {
-    color: white;
-  }
-}
-
-.test {
-  color: black;
-  background-color: black;
+	background-color: #ff0000;
+  border-radius: 5px;
+	&_custom-tooltip {
+		color: black;
+		background-color: white;
+		padding: 5px 10px;
+	}
 }

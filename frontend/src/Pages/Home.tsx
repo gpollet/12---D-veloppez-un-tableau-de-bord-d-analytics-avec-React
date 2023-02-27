@@ -27,11 +27,12 @@ const Home = () => {
 			{/* If no user is found with said ID, does not display the dashboard */}
 			{user.checkIfUserExist() ? (
 				<>
+					<div className="dashboard_container">
 					<div className="dashboard_top-message">
 						<h1>Bonjour <span className="home_user-name">{user.getInfos()?.firstName}</span></h1>
 						<p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
 					</div>
-					<div className="dashboard_bottom-container">
+					<div className="dashboard_charts-container">
 						<div className="dashboard_left-panel">
 							<ActivityGraph sessions={user.getActivity()} />
 							<div className="dashboard_left-panel--bottom">
@@ -41,7 +42,7 @@ const Home = () => {
 							</div>
 						</div>
 						<div className="dashboard_right-panel">{createKeyData()}</div>
-					</div>
+					</div></div>
 				</>
 			) : (
 				<h1>Aucun utilisateur trouvé.</h1>

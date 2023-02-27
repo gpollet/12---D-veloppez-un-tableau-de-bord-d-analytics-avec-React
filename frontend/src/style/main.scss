@@ -1,4 +1,5 @@
 @use "./vendors/normalize.scss";
+@use "./variables";
 @use "./global";
+@use "./pages/pages-index";
 @use "./components/components-index";
-@use "./pages/pages-index"

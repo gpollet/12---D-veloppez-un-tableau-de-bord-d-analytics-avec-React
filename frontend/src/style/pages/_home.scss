@@ -1,20 +1,37 @@
 .dashboard {
-	&_top-message {
+	&_container {
 		width: 100%;
+		margin-left: 5em;
+		margin-top: 2em;
 	}
-	&_bottom-container {
+
+	&_top-message {
+		margin-bottom: 5em;
+	}
+
+	&_charts-container {
 		display: flex;
 		justify-content: space-between;
-		height: 100%;
 	}
 	&_left-panel {
+		display: flex;
+		flex-direction: column;
+		width: 70%;
+		gap: 5em;
 		&--bottom {
 			display: flex;
 			justify-content: space-between;
 		}
 	}
+	&_right-panel {
+		width: 25%;
+	}
 }
 
 .home_user-name {
 	color: red;
+}
+
+.recharts-responsive-container {
+	background-color: #fbfbfb;
 }
