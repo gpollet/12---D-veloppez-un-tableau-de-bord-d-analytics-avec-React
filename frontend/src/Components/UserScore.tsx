@@ -1,4 +1,5 @@
-import { Pie, PieChart } from "recharts";
+import { Label, LabelProps, Pie, PieChart } from "recharts";
+import { PolarViewBox } from "recharts/types/util/types.js";
 import { formatedScore } from "../types.js";
 
 const UserScore = ({
@@ -23,40 +24,61 @@ const UserScore = ({
 		return startAngle - progressAngle;
 	};
 
+	// Typeguard to narrow the type of viewBox, which MUST be PolarViewBox since CartesianViewBox does not contains properties cx & cy, causing an error.
+	const isPolarViewBox = (viewBoxParams: any): viewBoxParams is PolarViewBox => {
+		if (viewBoxParams.cx | viewBoxParams.cy) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+	// Creates a custom label, needed to display the text content on multiple lines
+	const CustomLabel = ({ viewBox }: LabelProps): JSX.Element => {
+		if (viewBox && isPolarViewBox(viewBox)) {
+			const { cx, cy } = viewBox;
+			const labelFontSize = 18;
+			return (
+				<>
+					<text
+						x={cx}
+						y={cy! - labelFontSize}
+						textAnchor="middle"
+						dominantBaseline="central">
+						<tspan
+							fontSize={labelFontSize * 1.5}
+							fontWeight={700}>
+							{userProgress}%
+						</tspan>
+						<tspan
+							y={cy! + labelFontSize * 0.5}
+							x={cx}
+							fontSize={labelFontSize}>
+							de votre
+						</tspan>
+						<tspan
+							y={cy! + labelFontSize * 1.5}
+							x={cx}
+							fontSize={labelFontSize}>
+							objectif
+						</tspan>
+					</text>
+				</>
+			);
+		} else {
+			return (
+				<div>
+					<p>Erreur</p>
+				</div>
+			);
+		}
+	};
 	return (
 		<>
 			<PieChart
 				data={score}
 				width={width}
-				height={height}
-			>
-				<text
-					x={width ? width / 3 : undefined}
-					y={height ? height / 6 : undefined}
-					textAnchor="end"
-					fontSize="1em"
-				>
-					Score
-				</text>
-				<text
-					x={height ? height / 2 : undefined}
-					y={width ? width / 2 : undefined}
-					textAnchor="middle"
-					alignmentBaseline="middle"
-					fontWeight={700}
-					fontSize="2em"
-				>
-					{`${userProgress}%`}
-				</text>
-				<text
-					textAnchor="middle"
-					alignmentBaseline="middle"
-					x={height ? height / 2 : undefined}
-					y={width ? width / 2 + 26 : undefined}
-					
-				>
-					{`de votre objectif`}
-				</text>
+				height={height}>
 				<Pie
 					data={score}
 					dataKey={"score"}
@@ -65,8 +87,9 @@ const UserScore = ({
 					fill="#FF0000"
 					startAngle={startAngle}
 					endAngle={percentToAngle()}
-					cornerRadius={5}
-				></Pie>
+					cornerRadius={5}>
+					<Label content={<CustomLabel />} />
+				</Pie>
 			</PieChart>
 		</>
 	);
