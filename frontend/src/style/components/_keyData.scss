@@ -1,23 +1,31 @@
+@use "../mixins" as mixins;
+
 .dashboard_right-panel {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 25%;
-  &-container {
-    width: 80%;
-    height: 7em;
-    display: flex;
-    align-items: center;
-    gap: 2em;
-    background-color: #FBFBFB;
-    padding-left: 1em;
+  @include mixins.max-screen-width-1439 {
+    width: 100%;
+    flex-direction: row;
   }
-  & img {
-    width: 60px;
-    height: 60px;
-  }
-  &-values {
-    font-weight: bold;
-  }
-
+	&-container {
+		width: 80%;
+		height: 7em;
+		display: flex;
+		align-items: center;
+		gap: 2em;
+		background-color: #fbfbfb;
+		padding-left: 1em;
+    @include mixins.max-screen-width-1439 {
+		padding: 0;	
+		}
+	}
+	& img {
+		width: 60px;
+		height: 60px;
+	}
+	&-values {
+		font-weight: bold;
+	}
 }

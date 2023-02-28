@@ -1,23 +1,33 @@
+@use "../mixins" as mixins;
+
 .dashboard {
 	&_container {
 		width: 100%;
-		margin-left: 5em;
-		margin-top: 2em;
+		margin: 2em 0 0 5em;
+		@include mixins.max-screen-width-1439 {
+			width: 90%;
+			margin: 0;
+			padding: 2em;
+		}
 	}
 
-	&_top-message {
-		margin-bottom: 5em;
-	}
 
 	&_charts-container {
 		display: flex;
 		justify-content: space-between;
+		padding-bottom: 1em;
+		@include mixins.max-screen-width-1439 {
+			flex-direction: column;
+		}
 	}
 	&_left-panel {
 		display: flex;
 		flex-direction: column;
 		width: 70%;
-		gap: 5em;
+		gap: 2em;
+		@include mixins.max-screen-width-1439 {
+			width: 100%;
+		}
 		&--bottom {
 			display: flex;
 			justify-content: space-between;

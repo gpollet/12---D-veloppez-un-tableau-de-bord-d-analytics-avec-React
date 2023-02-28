@@ -1,16 +1,16 @@
 .left-nav {
-	height: 100%;
 	background-color: black;
 	width: 10%;
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
+	position: relative;
 	& p {
-    width:max-content;
+		width: max-content;
 		position: absolute;
 		transform: (rotate(-90deg));
 		color: white;
-    align-self: flex-end;
-    bottom: 10%;
+		align-self: flex-end;
+		bottom: 10%;
 	}
 	&_icons {
 		height: 70%;
@@ -20,6 +20,6 @@
 		align-items: center;
 		margin: 0;
 		padding: 0 1em;
-    gap: 1em;
+		gap: 1em;
 	}
 }
