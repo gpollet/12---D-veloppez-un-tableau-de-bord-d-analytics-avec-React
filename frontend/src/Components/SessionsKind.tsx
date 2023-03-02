@@ -17,6 +17,7 @@ const SessionsKind = ({
 				data={sessions}
 				height={height}
 				width={width}
+				innerRadius="12%"
 				className="chart_session-kind"
 			>
 				<PolarAngleAxis dataKey={"kind"} tick={{ fill: "white" }} textAnchor="middle" />

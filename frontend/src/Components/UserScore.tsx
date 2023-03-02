@@ -80,6 +80,7 @@ const UserScore = ({
 				width={width}
 				height={height}>
 				<Pie
+				className="chart_user-score"
 					data={score}
 					dataKey={"score"}
 					innerRadius={pieRadius - 10}
