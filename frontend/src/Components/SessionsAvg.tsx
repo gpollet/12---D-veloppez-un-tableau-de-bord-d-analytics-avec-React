@@ -35,12 +35,7 @@ const SessionsAvg = ({
 	};
 	return (
 		<>
-			<LineChart
-				data={sessions}
-				className="chart_session-average"
-				height={height}
-				width={width}
-			>
+			<LineChart data={sessions} className="chart_session-average" height={height} width={width}>
 				<XAxis
 					dataKey={"day"}
 					axisLine={false}
@@ -58,10 +53,13 @@ const SessionsAvg = ({
 					strokeWidth={2}
 					stroke="white"
 				/>
-				<Tooltip
-					content={<TooltipContent />}
-					wrapperStyle={{ outline: "none" }}
-				/>
+				<Tooltip content={<TooltipContent />} wrapperStyle={{ outline: "none" }} />
+				<text x="1.5em" y="2em" className="chart_session-average-title">
+					Durée moyenne des
+				</text>
+				<text x="1.5em" y="3em" className="chart_session-average-title">
+					sessions
+				</text>
 			</LineChart>
 		</>
 	);

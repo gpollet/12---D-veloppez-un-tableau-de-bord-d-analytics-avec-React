@@ -57,7 +57,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 					<text
 						// y = 1em : margin from <p> element in .dashboard_top-message
 						y="1em"
-						className="activity-graph_title"
+						className="charts-title"
 					>
 						Activité Quotidienne
 					</text>
