@@ -13,7 +13,7 @@ import { UserActivityType } from "../types.js";
 
 const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] }) => {
 	// Retrieves the number of the day corresponding to each session
-	const getSessionDay = () => sessions.map(session => new Date(session.day).getDate());
+	const getSessionDay = () => sessions.map((session) => new Date(session.day).getDate());
 	/**
 	 * If tooltip is active, display a custom div containing the values corresponding to that session
 	 * TooltipProps<value, name("Poids (kg" | "Calories brûlées (kCal)")>
@@ -43,30 +43,17 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 		}
 	};
 	const containerHeight = 320;
-	const legendHeight = 30;
+	const legendHeight = 40;
 	return (
 		<>
-			<ResponsiveContainer
-				width="100%"
-				height={containerHeight}
-			>
-				<BarChart
-					data={sessions}
-					barSize={8}
-					margin={{top: 30, right: 15, bottom:15, left: 0}}
-				>
+			<ResponsiveContainer width="100%" height={containerHeight}>
+				<BarChart data={sessions} barSize={8} margin={{ top: 30, right: 15, bottom: 15, left: 0 }}>
 					<text
-						// y = 1em : margin from <p> element in .dashboard_top-message
-						y="1em"
-						className="charts-title"
-					>
+						y={legendHeight}
+						className="charts-title">
 						Activité Quotidienne
 					</text>
-					<XAxis
-						dataKey={getSessionDay}
-						tickLine={false}
-						//padding={{ left: 0, right: 0 }}
-					/>
+					<XAxis dataKey={getSessionDay} tickLine={false} />
 					<YAxis
 						tickLine={false}
 						orientation="right"
@@ -75,17 +62,12 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 						domain={["dataMin-1", "dataMax+1"]}
 						allowDecimals={false}
 					/>
-					<YAxis
-						yAxisId="caloriesYAxis"
-						dataKey="calories"
-						allowDataOverflow={true}
-						hide={true}
-					/>
+					<YAxis yAxisId="caloriesYAxis" dataKey="calories" allowDataOverflow={true} hide={true} />
 					<Tooltip
-						position={{ y: 30 }}
+						position={{ y: legendHeight }}
 						content={<TooltipContent />}
 						wrapperStyle={{ outline: "none" }}
-						cursor={{opacity: "0.5"}}
+						cursor={{ opacity: "0.5" }}
 					/>
 					<CartesianGrid
 						strokeDasharray="0 3 0 "
@@ -93,9 +75,9 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 						vertical={false}
 						horizontal={true}
 					/>
-					
+
 					<Legend
-						wrapperStyle={{ top: 0 }}
+						wrapperStyle={{ top: 25 }}
 						height={legendHeight}
 						verticalAlign="top"
 						align="right"
