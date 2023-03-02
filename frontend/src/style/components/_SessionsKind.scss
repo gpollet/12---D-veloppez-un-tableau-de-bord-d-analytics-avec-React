@@ -1,4 +1,33 @@
+@use "../variables" as var;
+
 .chart_session-kind {
-  background-color: #282D30;
-  border-radius: 5px;
+	background-color: #282d30;
+	border-radius: 5px;
+}
+
+.recharts-polar-angle-axis-tick {
+	// Tick "Intensité"
+	&:nth-child(1) {
+		transform: translateY(-0.2em);
+	}
+	// Tick "Vitesse"
+	&:nth-child(2) {
+		transform: translateY(var.$radar-chart_cardio-vitesse-Y);
+	}
+	// Tick "Force"
+	&:nth-child(3) {
+		transform: translateY(var.$radar-chart_energie-force-Y);
+	}
+	// Tick "Endurance"
+	&:nth-child(4) {
+		transform: translateY(0.7em);
+	}
+	// Tick "Énergie"
+	&:nth-child(5) {
+		transform: translateY(var.$radar-chart_energie-force-Y);
+	}
+	// Tick "Cardio"
+	&:nth-child(6) {
+		transform: translateY(var.$radar-chart_cardio-vitesse-Y);
+	}
 }
