@@ -53,6 +53,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 				<BarChart
 					data={sessions}
 					barSize={8}
+					margin={{top: 30, right: 15, bottom:15, left: 0}}
 				>
 					<text
 						// y = 1em : margin from <p> element in .dashboard_top-message
@@ -64,7 +65,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 					<XAxis
 						dataKey={getSessionDay}
 						tickLine={false}
-						padding={{ left: 0, right: 0 }}
+						//padding={{ left: 0, right: 0 }}
 					/>
 					<YAxis
 						tickLine={false}
@@ -80,17 +81,19 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 						allowDataOverflow={true}
 						hide={true}
 					/>
-					<CartesianGrid
-						strokeDasharray="0 3 0 "
-						horizontalPoints={[containerHeight / 2, containerHeight * 0.1]}
-						vertical={false}
-						horizontal={true}
-					/>
 					<Tooltip
 						position={{ y: 30 }}
 						content={<TooltipContent />}
 						wrapperStyle={{ outline: "none" }}
+						cursor={{opacity: "0.5"}}
 					/>
+					<CartesianGrid
+						strokeDasharray="0 3 0 "
+						//horizontalPoints={[containerHeight / 2, containerHeight * 0.1]}
+						vertical={false}
+						horizontal={true}
+					/>
+					
 					<Legend
 						wrapperStyle={{ top: 0 }}
 						height={legendHeight}

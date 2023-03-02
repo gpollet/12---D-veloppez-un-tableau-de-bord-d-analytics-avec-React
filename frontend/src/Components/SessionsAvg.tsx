@@ -35,7 +35,12 @@ const SessionsAvg = ({
 	};
 	return (
 		<>
-			<LineChart data={sessions} className="chart_session-average" height={height} width={width}>
+			<LineChart
+				data={sessions}
+				className="chart_session-average"
+				height={height}
+				width={width}
+				margin={{ top: 60, bottom: 5 }}>
 				<XAxis
 					dataKey={"day"}
 					axisLine={false}
@@ -43,6 +48,12 @@ const SessionsAvg = ({
 					tick={{ fill: "white", opacity: 0.5 }}
 					padding={{ left: xAxisPadding, right: xAxisPadding }}
 				/>
+				<defs>
+					<linearGradient id="chart_session-average-gradient">
+						<stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.4} />
+						<stop offset="100%" stopColor="#FFFFFF" stopOpacity={1} />
+					</linearGradient>
+				</defs>
 				<Line
 					dataKey="sessionLength"
 					unit=" min"
@@ -51,9 +62,15 @@ const SessionsAvg = ({
 					//activeDot={true}
 					activeDot={{ stroke: "white", opacity: 1, strokeWidth: 5, r: 5 }}
 					strokeWidth={2}
-					stroke="white"
+					stroke="url(#chart_session-average-gradient)"
 				/>
-				<Tooltip content={<TooltipContent />} wrapperStyle={{ outline: "none" }} />
+
+				<Tooltip
+					content={<TooltipContent />}
+					wrapperStyle={{ outline: "none" }}
+					//cursor={{ fill: "#FFFFFF", width: "100%",  }}
+					//cursor={false}
+				/>
 				<text x="1.5em" y="2em" className="chart_session-average-title">
 					Durée moyenne des
 				</text>
