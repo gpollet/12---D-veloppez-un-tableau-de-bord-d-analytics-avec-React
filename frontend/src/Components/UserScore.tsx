@@ -40,14 +40,18 @@ const UserScore = ({
 			const labelFontSize = 18;
 			return (
 				<>
+					{/* Adds a white background circle to the label */}
+					<svg>
+						<circle cx="50%" cy="50%" r={pieRadius - 10} fill="white" />
+					</svg>
 					<text x={cx} y={cy! - labelFontSize} textAnchor="middle" dominantBaseline="central">
 						<tspan fontSize={labelFontSize * 1.5} fontWeight={700}>
 							{userProgress}%
 						</tspan>
-						<tspan y={cy! + labelFontSize * 0.5} x={cx} fontSize={labelFontSize}>
+						<tspan y={cy! + labelFontSize * 0.5} x={cx} fontSize={labelFontSize} fill="#74798C">
 							de votre
 						</tspan>
-						<tspan y={cy! + labelFontSize * 1.5} x={cx} fontSize={labelFontSize}>
+						<tspan y={cy! + labelFontSize * 1.5} x={cx} fontSize={labelFontSize} fill="#74798C">
 							objectif
 						</tspan>
 					</text>
