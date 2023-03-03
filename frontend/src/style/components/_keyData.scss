@@ -8,6 +8,7 @@
   @include mixins.max-screen-width-1439 {
     width: 100%;
     flex-direction: row;
+		margin-top: 0.5em;
   }
 	&-container {
 		width: 80%;
@@ -19,6 +20,13 @@
 		padding-left: 1em;
     @include mixins.max-screen-width-1439 {
 		padding: 0;	
+		gap: 0.5em;
+		height: 4em;
+		}
+		& p {
+			color: #74798C;
+			
+			
 		}
 	}
 	& img {
@@ -27,5 +35,6 @@
 	}
 	&-values {
 		font-weight: bold;
+		color: #282D30;
 	}
 }

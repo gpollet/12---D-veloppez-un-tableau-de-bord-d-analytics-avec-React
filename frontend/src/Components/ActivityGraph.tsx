@@ -64,7 +64,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 						className="charts-title">
 						Activité Quotidienne
 					</text>
-					<XAxis dataKey={getSessionDay} tickLine={false} />
+					<XAxis dataKey={getSessionDay} tickLine={false} color="#9B9EAC" />
 					<YAxis
 						tickLine={false}
 						orientation="right"
@@ -72,6 +72,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 						axisLine={false}
 						domain={["dataMin-1", "dataMax+1"]}
 						allowDecimals={false}
+						color="#9B9EAC"
 					/>
 					<YAxis yAxisId="caloriesYAxis" dataKey="calories" allowDataOverflow={true} hide={true} />
 					<Tooltip
