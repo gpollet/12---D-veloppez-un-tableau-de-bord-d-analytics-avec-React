@@ -6,9 +6,11 @@ import './style/css/main.css';
 function App() {
   return (
     <>
+    <header>
     <TopNav />
-    <LeftNav />
+    </header>
     <main>
+    <LeftNav />
     <Outlet />
     </main>
     </>

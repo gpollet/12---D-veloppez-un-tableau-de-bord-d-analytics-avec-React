@@ -1,0 +1,11 @@
+.activity-graph_ {
+	&custom-tooltip {
+		background-color: #e60000;
+		color: white;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		font-weight: 500;
+	}
+}

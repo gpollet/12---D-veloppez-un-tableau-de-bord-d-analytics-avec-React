@@ -1,20 +1,40 @@
+@use "../mixins" as mixins;
+
 .dashboard_right-panel {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 25%;
-  &-container {
+  @include mixins.max-screen-width-1439 {
     width: 100%;
-    flex-basis: 20%;
-    display: flex;
-    align-items: center;
-    gap: 2em;
+    flex-direction: row;
+		margin-top: 0.5em;
   }
-  & img {
-    width: 60px;
-    height: 60px;
-  }
-  &-values {
-    font-weight: bold;
-  }
-
+	&-container {
+		width: 80%;
+		height: 7em;
+		display: flex;
+		align-items: center;
+		gap: 2em;
+		background-color: #fbfbfb;
+		padding-left: 1em;
+    @include mixins.max-screen-width-1439 {
+		padding: 0;	
+		gap: 0.5em;
+		height: 4em;
+		}
+		& p {
+			color: #74798C;
+			
+			
+		}
+	}
+	& img {
+		width: 60px;
+		height: 60px;
+	}
+	&-values {
+		font-weight: bold;
+		color: #282D30;
+	}
 }

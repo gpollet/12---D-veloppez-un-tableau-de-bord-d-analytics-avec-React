@@ -1,5 +1,6 @@
 {
   "git.ignoreLimitWarning": true,
+  "liveSassCompile.settings.useNewCompiler": true,
   "liveSassCompile.settings.formats": [
     {
       "format": "compressed",

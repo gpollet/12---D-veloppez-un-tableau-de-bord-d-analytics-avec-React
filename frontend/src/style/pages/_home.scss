@@ -1,16 +1,61 @@
+@use "../mixins" as mixins;
+
 .dashboard {
 	&_top-message {
-		width: 100%;
+		@include mixins.max-screen-width-1439 {
+			& h1 {
+				margin-top: 0.5em;
+				margin-bottom: 0;
+			}
+			& p {
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
+			}
+		}
 	}
-	&_bottom-container {
+	&_container {
+		width: 100%;
+		margin: 1em 0 0 5em;
+		@include mixins.max-screen-width-1439 {
+			width: 90%;
+			margin: 0;
+			padding: 0 2em 0 2em;
+		}
+	}
+
+	&_charts-container {
 		display: flex;
 		justify-content: space-between;
-		height: 100%;
+		padding-bottom: 1em;
+		@include mixins.max-screen-width-1439 {
+			flex-direction: column;
+		}
 	}
 	&_left-panel {
+		display: flex;
+		flex-direction: column;
+		width: 70%;
+		gap: 2em;
+		@include mixins.max-screen-width-1439 {
+			width: 100%;
+			gap: 1em;
+		}
 		&--bottom {
 			display: flex;
 			justify-content: space-between;
 		}
 	}
+}
+
+.home_user-name {
+	color: red;
+}
+
+.recharts-responsive-container {
+	background-color: #fbfbfb;
+}
+
+.charts-title {
+	font-weight: bold;
+	color: #20253a;
 }

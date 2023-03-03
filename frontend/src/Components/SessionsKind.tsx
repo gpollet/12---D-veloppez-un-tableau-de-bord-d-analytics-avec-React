@@ -1,26 +1,28 @@
-import { CartesianGrid, PolarAngleAxis, PolarGrid, Radar, RadarChart, Tooltip } from "recharts";
+import { Label, PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 import { UserPerformanceType } from "../types.js";
 
-const SessionsKind = ({ sessions }: { sessions: UserPerformanceType["data"] }) => {
+const SessionsKind = ({
+	sessions,
+	height,
+	width,
+}: {
+	sessions: UserPerformanceType["data"];
+	height?: number;
+	width?: number;
+}): JSX.Element => {
+	const chartInnerMargin = 5;
 	return (
 		<>
 			<RadarChart
-				width={258}
-				height={263}
 				data={sessions}
+				height={height}
+				width={width}
+				innerRadius="12%"
 				className="chart_session-kind"
 			>
-				<Radar
-					dataKey="value"
-					fill="#FF0101B2"
-				/>
-				;
-				<CartesianGrid />
-				<PolarGrid />
-				<PolarAngleAxis
-					dataKey={"kind"}
-					//tickLine={false}
-				/>
+				<PolarAngleAxis dataKey={"kind"} tick={{ fill: "white" }} textAnchor="middle" />
+				<PolarGrid radialLines={false} />
+				<Radar dataKey="value" fill="#FF0101B2"></Radar>
 			</RadarChart>
 		</>
 	);

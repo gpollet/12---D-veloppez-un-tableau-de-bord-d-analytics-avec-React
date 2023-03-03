@@ -1,7 +1,8 @@
 #root {
   display: flex;
-  flex-wrap: wrap;
-  height: 95%;
+  flex-direction: column;
+  height: 100%;
+  font-family: 'Roboto';
 }
 
 html,body {
@@ -9,9 +10,7 @@ html,body {
 }
 
 main {
-  flex: 1 0 auto;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  width: 80%;
-  padding: 2.5em 0 0 5em;
+  flex: 1 0 auto;
 }
