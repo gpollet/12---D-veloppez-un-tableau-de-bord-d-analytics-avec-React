@@ -10,9 +10,13 @@ const SessionsAvg = ({
 	height?: number;
 	width?: number;
 }): JSX.Element => {
+	// Defines the padding on the left and right of the chart
 	const xAxisPadding: number = 15;
+
+	// Creates a custom tooltip
 	const TooltipContent = ({ active, payload }: TooltipProps<number, string>): JSX.Element => {
 		if (active && payload && payload.length) {
+			displayGrayOverlay(true);
 			return (
 				<div className="chart_session-average_custom-tooltip">
 					{
@@ -24,15 +28,34 @@ const SessionsAvg = ({
 				</div>
 			);
 		}
-		// Else scenario required by Typescript
+		// If tooltip is inactive, also turns off the gray overlay
 		else {
-			return (
-				<div className="chart_session-average_custom-tooltip">
-					<p>Erreur</p>
-				</div>
-			);
+			displayGrayOverlay(false);
+			return <></>;
 		}
 	};
+
+	const grayOverlay = document.querySelector(".chart_session-average_tooltip-background");
+	// Adds gray background on hover
+	const displayGrayOverlay = (tooltipIsActive: boolean) => {
+		const activeDot = document.querySelector(".recharts-active-dot")?.firstElementChild;
+		if (activeDot && tooltipIsActive === true) {
+			// Gets the x position of the currently displayed value so that the overlay starts at that position
+			const xPosition = activeDot.getAttribute("cx");
+			const overlayWidth = Number(width) - Number(xPosition);
+			// If hovered value is the very first one, makes sure the gray overlay covers the whole chart
+			if (xPosition === xAxisPadding.toString()) {
+				grayOverlay?.setAttribute("x", "0");
+				grayOverlay?.setAttribute("width", `${overlayWidth + xAxisPadding}`);
+			} else {
+				grayOverlay?.setAttribute("x", Number(xPosition).toString());
+				grayOverlay?.setAttribute("width", `${overlayWidth}`);
+			}
+		} else {
+			grayOverlay?.setAttribute("width", "0");
+		}
+	};
+
 	return (
 		<>
 			<LineChart
@@ -65,12 +88,14 @@ const SessionsAvg = ({
 					stroke="url(#chart_session-average-gradient)"
 				/>
 
-				<Tooltip
-					content={<TooltipContent />}
-					wrapperStyle={{ outline: "none" }}
-					//cursor={{ fill: "#FFFFFF", width: "100%",  }}
-					//cursor={false}
-				/>
+				<Tooltip content={<TooltipContent />} wrapperStyle={{ outline: "none" }} cursor={false} />
+				<svg>
+					<rect
+						className="chart_session-average_tooltip-background"
+						fill="black"
+						opacity={0.1}
+						height="100%"></rect>
+				</svg>
 				<text x="1.5em" y="2em" className="chart_session-average-title">
 					Durée moyenne des
 				</text>

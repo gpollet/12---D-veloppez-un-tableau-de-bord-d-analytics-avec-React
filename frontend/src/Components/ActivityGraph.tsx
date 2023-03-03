@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { UserActivityType } from "../types.js";
 
-const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] }) => {
+const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] }): JSX.Element => {
 	// Retrieves the number of the day corresponding to each session
 	const getSessionDay = () => sessions.map((session) => new Date(session.day).getDate());
 	/**
@@ -44,12 +44,23 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 	};
 	const containerHeight = 320;
 	const legendHeight = 40;
+	const chartContainerInnerMargin = 30;
 	return (
 		<>
 			<ResponsiveContainer width="100%" height={containerHeight}>
-				<BarChart data={sessions} barSize={8} margin={{ top: 30, right: 15, bottom: 15, left: 0 }}>
+				<BarChart
+					data={sessions}
+					barSize={8}
+					margin={{
+						top: 30,
+						right: chartContainerInnerMargin,
+						bottom: 15,
+						left: chartContainerInnerMargin,
+					}}>
 					<text
+						textAnchor="start"
 						y={legendHeight}
+						x={chartContainerInnerMargin}
 						className="charts-title">
 						Activité Quotidienne
 					</text>
@@ -69,12 +80,7 @@ const ActivityGraph = ({ sessions }: { sessions: UserActivityType["sessions"] })
 						wrapperStyle={{ outline: "none" }}
 						cursor={{ opacity: "0.5" }}
 					/>
-					<CartesianGrid
-						strokeDasharray="0 3 0 "
-						//horizontalPoints={[containerHeight / 2, containerHeight * 0.1]}
-						vertical={false}
-						horizontal={true}
-					/>
+					<CartesianGrid strokeDasharray="0 3 0 " vertical={false} horizontal={true} />
 
 					<Legend
 						wrapperStyle={{ top: 25 }}
