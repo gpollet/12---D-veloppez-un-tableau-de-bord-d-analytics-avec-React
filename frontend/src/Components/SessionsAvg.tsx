@@ -52,6 +52,7 @@ const SessionsAvg = ({
 				grayOverlay?.setAttribute("width", `${overlayWidth}`);
 			}
 		} else {
+			// If overlay is not active, hides gray overlay
 			grayOverlay?.setAttribute("width", "0");
 		}
 	};
@@ -63,12 +64,12 @@ const SessionsAvg = ({
 				className="chart_session-average"
 				height={height}
 				width={width}
-				margin={{ top: 60, bottom: 5 }}>
+				margin={{ top: 60, bottom: 15 }}>
 				<XAxis
 					dataKey={"day"}
 					axisLine={false}
 					tickLine={false}
-					tick={{ fill: "white", opacity: 0.5 }}
+					tick={{ fill: "white", opacity: 0.5, transform: 'translate(0, 12)' }}
 					padding={{ left: xAxisPadding, right: xAxisPadding }}
 				/>
 				<defs>
@@ -82,12 +83,16 @@ const SessionsAvg = ({
 					unit=" min"
 					type={"monotone"}
 					dot={false}
-					//activeDot={true}
-					activeDot={{ stroke: "white", opacity: 1, strokeWidth: 5, r: 5 }}
+					activeDot={{ stroke: "white", opacity: 1, strokeWidth: 4, r: 4, fill: "white" }}
 					strokeWidth={2}
 					stroke="url(#chart_session-average-gradient)"
 				/>
-
+				{/* Second line used to add semi-transparent circle around activeDot, and making sure their coordinates match */}
+				<Line
+					dataKey="sessionLength"
+					activeDot={{ stroke: "white", opacity: 0.5, strokeWidth: 9, r: 9, fill: "white" }}
+					display="none"
+				/>
 				<Tooltip content={<TooltipContent />} wrapperStyle={{ outline: "none" }} cursor={false} />
 				<svg>
 					<rect
