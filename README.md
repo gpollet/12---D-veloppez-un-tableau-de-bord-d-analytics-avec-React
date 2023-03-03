@@ -28,7 +28,7 @@ Data can be obtained either through a mock, or through the API :
 * To use mocked data, open the *.env* file you created and change the value of *VITE_USE_MOCK_DATA* to `'true'`
 * To use data from the API, open the *.env* file you created and change the value of *VITE_USE_MOCK_DATA* to `'false'`
 
-## 3. Endpoints^[]
+## 3. Endpoints[^1]
 ### 3.1 Possible endpoints
 
 This project includes four endpoints that you will be able to use:
@@ -46,4 +46,4 @@ This project includes four endpoints that you will be able to use:
 -   `http://localhost:3000/user/18`  - Retrieves user 18's main information.
 
 
- [^1^](#fnref1) [ API Documentation Source](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
+ [^1]: [ Endpoints Documentation Source](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
