@@ -4,7 +4,12 @@
 * [NodeJS 18.14.2 or higher](https://nodejs.org/en/)
 * [Yarn](https://yarnpkg.com/)
 
-## 1.2 Initializing the project
+## 1.2 Technologies
+* React 18.2.0
+* TypeScript
+* Recharts
+
+## 1.3 Initializing the project
 * Clone the repository or [download it](https://github.com/gpollet/12---D-veloppez-un-tableau-de-bord-d-analytics-avec-React/archive/refs/heads/master.zip) onto your computer
 * In the *backend* folder, install the dependencies with the command `yarn`
 * In the *frontend* folder, install the dependencies with the command `yarn`
@@ -28,7 +33,7 @@ Data can be obtained either through a mock, or through the API :
 * To use mocked data, open the *.env* file you created and change the value of *VITE_USE_MOCK_DATA* to `'true'`
 * To use data from the API, open the *.env* file you created and change the value of *VITE_USE_MOCK_DATA* to `'false'`
 
-## 3. Endpoints[^1]
+## 3. Endpoints^[]
 ### 3.1 Possible endpoints
 
 This project includes four endpoints that you will be able to use:
@@ -46,4 +51,4 @@ This project includes four endpoints that you will be able to use:
 -   `http://localhost:3000/user/18`  - Retrieves user 18's main information.
 
 
- [^1]: [ Endpoints Documentation Source](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
+ [^1^](#fnref1) [ API Documentation Source](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
